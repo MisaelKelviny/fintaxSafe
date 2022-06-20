@@ -1,9 +1,10 @@
+import Image from 'next/image'
 import styled from 'styled-components'
 import token from '../../../../styles/design-tokens'
 import Navbar from '../NavBar'
 import SubTitle from '../Subtitle'
 import Title from '../Title'
-import background from '/public/image/background.png'
+// import background from '/public/image/background.png'
 
 type ImagePropos = {
   imgUrl: string
@@ -59,21 +60,12 @@ const ImageContainer = styled.div`
 const ImageRaw = styled.div`
   width: 100%;
   height: 100%;
-  background: url(${(props: ImagePropos) => props.imgUrl});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   position: absolute;
   z-index: -1;
   filter: blur(5px);
   opacity: 0.24;
 
   @media ${token.size.tablet} {
-    background: url(${(props: ImagePropos) => props.imgUrl});
-    background-repeat: no-repeat;
-    background-position: 0%;
-    background-size: 137%;
-    background-size: cover;
     display: block;
     position: relative;
     filter: unset;
@@ -93,7 +85,16 @@ function Header() {
             MIGRAR PARA O DIGITAL
           </LandingButton>
         </HeaderBanner>
-        <ImageRaw imgUrl={background.src} />
+        <ImageRaw>
+          <Image
+            src={'/image/background.png'}
+            width={'100%'}
+            height={'100%'}
+            layout={'responsive'}
+            priority />
+        </ImageRaw>
+        {/* <Image src={'/image/background.png'} width={'100%'} height={'100%'} layout={'fill'} priority /> */}
+        {/* <ImageRaw imgUrl={background.src} /> */}
       </HeaderContainer>
     </div>
   )

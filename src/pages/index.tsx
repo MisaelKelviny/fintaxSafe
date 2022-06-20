@@ -8,11 +8,6 @@ import Header from '../components/LandingPage/Header'
 import Layout from '../components/LandingPage/Layout'
 import SubTitle from '../components/LandingPage/Subtitle'
 import Title from '../components/LandingPage/Title'
-import bg1 from '/public/image/bg1.png'
-import bg2 from '/public/image/bg2.png'
-import bg3 from '/public/image/bg3.png'
-import bg4 from '/public/image/bg4.png'
-import business from '/public/image/business.png'
 import logoClaro from '/public/image/logo_claro.png'
 
 interface TextProp {
@@ -62,10 +57,6 @@ const TemplateRow = styled.div`
 const ImageRaw = styled.div`
   width: 100%;
   height: 100%;
-  background: url("${business.src}");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   padding: 0% 10% 0% 0%;
 `
 
@@ -117,26 +108,26 @@ const Footer = styled.footer`
 
 const benefits = [
   {
-    img: bg4,
+    img: '/image/bg4.png',
     title: "Segurança",
     text: `O certificado digital permite que qualquer tipo de documento eletrônico seja assinado com valor jurídico, sem
     que o mesmo corra o risco de ser fraudado ou alterado.`,
     reverse: false,
   },
   {
-    img: bg3,
+    img: '/image/bg3.png',
     title: "Praticidade",
     text: `Você pode fazer tudo isso sem sair da empresa o que gera praticidade é a possibilidade de armazenar arquivos na nuvem com o máximo de segurança.`,
     reverse: true,
   },
   {
-    img: bg1,
+    img: '/image/bg1.png',
     title: "Redução de Custo",
     text: `A partir do momento em que você começa a utilizar o certificado digital, você não precisa mais se preocupar com a impressão de documentos, gastos com reconhecimento de firma em cartórios e transporte para o envio de arquivo.`,
     reverse: false,
   },
   {
-    img: bg2,
+    img: '/image/bg2.png',
     title: "Sustentabilidade",
     text: `Você consegue tornar a sua empresa muito mais sustentável, já que a emissão das notas fiscais eletrônicas, por exemplo, é feita virtualmente, dispensando a utilização de papel.`,
     reverse: true,
@@ -244,7 +235,14 @@ const Home: NextPage = () => {
       <Layout>
         <TemplateRow>
           <div style={{ height: '100%', width: '90%', display: 'block' }}>
-            <ImageRaw />
+            <ImageRaw>
+              <Image
+                src={'/image/business.png'}
+                width={'100%'}
+                height={'100%'}
+                layout={'responsive'}
+                priority />
+            </ImageRaw>
           </div>
           <div>
             <Title text='Solução para diferentes tipos de negócio' />
