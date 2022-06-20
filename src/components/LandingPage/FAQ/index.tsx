@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
+type BackgroundColorPropos = {
+  isOpen: boolean
+}
+
 const Container = styled.div`
   width: 100%;
   background: white;
@@ -19,9 +23,9 @@ const ContainerHeader = styled.div`
 const BackgroundColor = styled.div`
   width: 100%;
   height: 100%;
-  display: ${props => props.isOpen ? 'block' : 'none'};
-  padding: 20px;
-  background-color: #f3f3f3;
+  display: ${(props: BackgroundColorPropos) => props.isOpen ? 'block' : 'none'};
+padding: 20px;
+background - color: #f3f3f3;
 `
 
 const faqs = [
@@ -38,10 +42,10 @@ const faqs = [
     O problema é que com esse grande volume de dados circulando na rede, aumentam os riscos de violação e roubo dessas informações por terceiros.
     Diante disso, é necessário procurar por ferramentas que ajudem a evitar ataques e garantam a sua segurança.
     
-    O certificado digital, por sua vez, cumpre bem essa função. Ele permite que as transações eletrônicas e as trocas de dados em ambiente virtual sejam realizadas de forma segura e com autenticidade.
+    O certificado digital, por sua vez, cumpre bem essa função.Ele permite que as transações eletrônicas e as trocas de dados em ambiente virtual sejam realizadas de forma segura e com autenticidade.
     
     Toda essa vantagem se deve à criptografia, tecnologia presente na ferramenta, que permite que as informações contidas nela permaneçam protegidas, à prova de qualquer interferência de terceiros.
-    Somente usuários com as chaves criptográficas podem decifrar e acessá-las.
+    Somente usuários com as chaves criptográficas podem decifrar e acessá - las.
     Além disso, o certificado digital auxilia no controle de acesso às informações pessoais dos clientes, ou seja, é possível identificar quais colaboradores têm contato com esses dados cobertos pela LGPD, o que evita problemas com desvios e fraudes.`,
     id: '2'
   },
@@ -52,15 +56,15 @@ const faqs = [
     Bronze para acessar serviços digitais menos sensíveis;
     Prata para acessar grande parte dos serviços digitais;
     e ouro que libera o acesso a qualquer serviço digital.
-    A restrição de acesso também já foi aplicada para outros serviços do governo federal, como a Central de Atendimento ao Contribuinte (e-CAC), resgate de valores esquecidos em bancos por meio do Sistema Valores a Receber, além da declaração pré-preenchida do Imposto de Renda.
+    A restrição de acesso também já foi aplicada para outros serviços do governo federal, como a Central de Atendimento ao Contribuinte(e - CAC), resgate de valores esquecidos em bancos por meio do Sistema Valores a Receber, além da declaração pré - preenchida do Imposto de Renda.
     
     Contas gov.br
     
-    São consideradas de nível bronze as contas cadastradas, exclusivamente, com dados do CPF ou INSS do usuário. O mesmo vale para o registro feito presencialmente nas unidades do Instituto Nacional do Seguro Social (INSS) ou Denatran.
+    São consideradas de nível bronze as contas cadastradas, exclusivamente, com dados do CPF ou INSS do usuário.O mesmo vale para o registro feito presencialmente nas unidades do Instituto Nacional do Seguro Social(INSS) ou Denatran.
     
-    Por outro lado, as contas autenticadas por biometria facial da carteira de motorista (CNH), dados bancários (internet banking ou banco credenciado) ou cadastro SIGEPE (servidores públicos) passam a ter nível prata de segurança.
-    
-    Já as contas validadas pela biometria facial da Justiça Eleitoral ou por certificado digital compatível com ICP-Brasil têm nível ouro de segurança.`,
+    Por outro lado, as contas autenticadas por biometria facial da carteira de motorista(CNH), dados bancários(internet banking ou banco credenciado) ou cadastro SIGEPE(servidores públicos) passam a ter nível prata de segurança.
+
+Já as contas validadas pela biometria facial da Justiça Eleitoral ou por certificado digital compatível com ICP - Brasil têm nível ouro de segurança.`,
     id: '3'
   },
   {
@@ -76,7 +80,7 @@ const faqs = [
   },
   {
     title: 'Preenchimento automatico do imposto de renda?',
-    awnser: `Contribuintes já podem utilizar a funcionalidade de pré-preenchimento da declaração do Imposto de Renda, desenvolvida pelo Serpro para a Receita Federal, desde a última segunda-feira, 14/03. A facilidade está disponível, em todas as plataformas digitais do IRPF, para pessoas que possuem certificado digital e conta nível ouro ou prata na plataforma gov.br. Com a funcionalidade, é possível recuperar os dados preenchidos na declaração do ano anterior e o contribuinte tem menos chance de errar o preenchimento e cair na malha fina.
+    awnser: `Contribuintes já podem utilizar a funcionalidade de pré - preenchimento da declaração do Imposto de Renda, desenvolvida pelo Serpro para a Receita Federal, desde a última segunda - feira, 14 / 03.A facilidade está disponível, em todas as plataformas digitais do IRPF, para pessoas que possuem certificado digital e conta nível ouro ou prata na plataforma gov.br.Com a funcionalidade, é possível recuperar os dados preenchidos na declaração do ano anterior e o contribuinte tem menos chance de errar o preenchimento e cair na malha fina.
     `,
     id: '5'
   }

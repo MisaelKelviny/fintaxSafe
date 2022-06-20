@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 import token from '../../../styles/design-tokens'
 
+interface SubTitleProp {
+  text?: string
+  align?: string
+}
+
 const Text = styled.div`
   color: ${token.color.terciary};
   font-size: 1.2rem;
@@ -9,14 +14,9 @@ const Text = styled.div`
 
   @media ${token.size.tablet}  {
     font-size: 1.5rem;
-    text-align:  ${props => props.align};
+    text-align:  ${(props: SubTitleProp) => props.align};
   }
 `
-
-interface SubTitleProp {
-  text: string
-  align: string
-}
 
 function SubTitle({ text, align = 'unset' }: SubTitleProp) {
   return (

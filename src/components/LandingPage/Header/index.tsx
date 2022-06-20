@@ -5,6 +5,10 @@ import Navbar from '../NavBar'
 import SubTitle from '../Subtitle'
 import Title from '../Title'
 
+type ImagePropos = {
+  imgUrl: string
+}
+
 const HeaderContainer = styled.div`
   height: 100vh;
   width: 100%;
@@ -55,7 +59,7 @@ const ImageContainer = styled.div`
 const ImageRaw = styled.div`
   width: 100%;
   height: 100%;
-  background: url(${props => props.imgUrl});
+  background: url(${(props: ImagePropos) => props.imgUrl});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -65,7 +69,7 @@ const ImageRaw = styled.div`
   opacity: 0.24;
 
   @media ${token.size.tablet} {
-    background: url(${props => props.imgUrl});
+    background: url(${(props: ImagePropos) => props.imgUrl});
     background-repeat: no-repeat;
     background-position: 0%;
     background-size: 137%;

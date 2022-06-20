@@ -14,15 +14,27 @@ import Layout from '../components/LandingPage/Layout'
 import SubTitle from '../components/LandingPage/Subtitle'
 import Title from '../components/LandingPage/Title'
 
+interface TextProp {
+  text?: string,
+  isBold?: boolean,
+  align?: string
+}
+
+interface AttributeProp {
+  color?: string
+  imgUrl?: string
+  reverse?: boolean
+}
+
 const Text = styled.p`
   color: ${token.color.terciary};
-  text-align: ${props => props.align};
+  text-align: ${(props: TextProp) => props.align};
   
   @media ${token.size.tablet} {
     font-size: 24px;
     line-height: 36px;
     color: ${token.color.terciary}
-    text-align: ${props => props.align};
+    text-align: ${(props: TextProp) => props.align};
   }
 `
 
@@ -36,7 +48,7 @@ const TemplateRow = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
-  direction: ${props => props.reverse ? 'rtl' : 'ltr'};
+  direction: ${(props: AttributeProp) => props.reverse ? 'rtl' : 'ltr'};
   height: 100%;
   width: 100%;
 
@@ -49,7 +61,7 @@ const TemplateRow = styled.div`
 const ImageRaw = styled.div`
   width: 100%;
   height: 100%;
-  background: url(${props => props.imgUrl});
+  background: url(${(props: AttributeProp) => props.imgUrl});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -58,7 +70,7 @@ const ImageRaw = styled.div`
 
 const CardsOption = styled.div`
   height: 100%;
-  background-color: ${props => props.color};
+  background-color: ${(props: AttributeProp) => props.color};
   padding: 10px;
 `
 
@@ -127,7 +139,7 @@ const Home: NextPage = () => {
   const [device, setDevice] = useState('')
   const [validate, setValidate] = useState('')
   const [atendimento, setAtendimento] = useState('')
-  const [aceptTerms, setAceptTerms] = useState(false)
+  const [aceptTerms, setAceptTerms] = useState('false')
 
   const buy = () => {
     if (aceptTerms && option && device && validate && atendimento) {
@@ -145,7 +157,7 @@ const Home: NextPage = () => {
       if (atendimento === '') {
         alert('Está faltando escolher a forma de atendimento')
       }
-      if (aceptTerms === false) {
+      if (aceptTerms === 'false') {
         alert('Leia e Aceite os termos de uso antes de efetuar a compra')
       }
     }
@@ -166,7 +178,7 @@ const Home: NextPage = () => {
       ],
       color: token.color.primary,
       option: option,
-      set: (e) => setOption(e.target.value)
+      set: (e: any) => setOption(e.target.value)
     },
     {
       title: 'Dispositivos',
@@ -184,14 +196,14 @@ const Home: NextPage = () => {
       ],
       color: token.color.primary,
       option: device,
-      set: (e) => setDevice(e.target.value)
+      set: (e: any) => setDevice(e.target.value)
     },
     {
       title: 'Validade',
       values: [{ type: 'Validade', value: '12 Meses' }],
       color: token.color.primary,
       option: validate,
-      set: (e) => setValidate(e.target.value)
+      set: (e: any) => setValidate(e.target.value)
     },
   ]
 
@@ -205,7 +217,7 @@ const Home: NextPage = () => {
           Ou seja, a proteção dos dados é mais que garantida!' />
         {benefits.map((object, index) => {
           return (
-            <TemplateRow reverse={object.reverse} key={`${index}_${object.title}`}>
+            <TemplateRow reverse={object.reverse} key={`${index}_${object.title}`} >
               <div style={{ margin: '0 auto' }}>
                 <Image src={object.img} alt="security icon" width={400} height={400} />
               </div>
@@ -336,10 +348,10 @@ const Home: NextPage = () => {
                         type='checkbox'
                         value={aceptTerms}
                         name="accept"
-                        checked={aceptTerms}
-                        onChange={() => setAceptTerms(!aceptTerms)}
+                        checked={JSON.parse(aceptTerms)}
+                        onChange={() => setAceptTerms('true')}
                       />
-                      <span style={{paddingLeft: '10px'}}>Li e Aceito os termos de uso</span>
+                      <span style={{ paddingLeft: '10px' }}>Li e Aceito os termos de uso</span>
                     </div>
                   </div>
                 </div>
