@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import background from '../../../../assets/image/background.png'
 import token from '../../../../styles/design-tokens'
 import Navbar from '../NavBar'
 import SubTitle from '../Subtitle'
 import Title from '../Title'
+import background from '/public/image/background.png'
 
 type ImagePropos = {
   imgUrl: string

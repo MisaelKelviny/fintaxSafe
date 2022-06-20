@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styled from 'styled-components'
-import logoEscuro from '../../../../assets/image/logo_escuro.png'
 import token from '../../../../styles/design-tokens'
+import logoEscuro from '/public/image/logo_escuro.png'
 
 const NavContainer = styled.nav`
   position: fixed;
