@@ -17,10 +17,6 @@ const NavContainer = styled.nav`
   z-index: 99;
 `
 
-const Logo = styled.div`
-  
-`
-
 const Menu = styled.ul`
   list-style-type: none;
   display: flex;
@@ -50,7 +46,7 @@ const MenuItem = styled.li`
 function Navbar() {
   return (
     <NavContainer>
-      <Logo>
+      <div>
         <Image
           src={logoEscuro}
           alt="O logo da fintaxSafe escuro"
@@ -58,7 +54,7 @@ function Navbar() {
           height={50}
           objectFit='contain'
         />
-      </Logo>
+      </div>
       <Menu>
         <MenuItem>Produtos</MenuItem>
         <MenuItem>Fale Conosco</MenuItem>
