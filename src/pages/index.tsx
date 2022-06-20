@@ -54,10 +54,22 @@ const TemplateRow = styled.div`
   }
 `
 
+const Row = styled.div`
+  margin: 40% auto;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  @media ${token.size.tablet} {
+    margin: 7% auto;
+  }
+`
+
 const ImageRaw = styled.div`
   width: 100%;
   height: 100%;
   padding: 0% 10% 0% 0%;
+  position: relative;
 `
 
 const CardsOption = styled.div`
@@ -218,10 +230,18 @@ const Home: NextPage = () => {
           Ou seja, a proteção dos dados é mais que garantida!' />
         {benefits.map((object, index) => {
           return (
-            <TemplateRow reverse={object.reverse} key={`${index}_${object.title}`} >
-              <div style={{ margin: '0 auto' }}>
-                <Image src={object.img} alt="security icon" width={400} height={400} />
-              </div>
+            <TemplateRow reverse={object.reverse} key={`${index}_${object.title}`}>
+              <Image
+                src={object.img}
+                alt="security icon"
+                objectFit='contain'
+                width={200}
+                height={200}
+                quality={100}
+                layout='responsive'
+                priority
+              />
+              {/* </Row> */}
               <div style={{ direction: 'ltr' }}>
                 <h2>{object.title}</h2>
                 <Text align="start">
@@ -238,9 +258,10 @@ const Home: NextPage = () => {
             <ImageRaw>
               <Image
                 src={'/image/business.png'}
-                width={'100%'}
-                height={'100%'}
-                layout={'responsive'}
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+                alt={'Image of business man'}
                 priority />
             </ImageRaw>
           </div>
@@ -386,7 +407,7 @@ const Home: NextPage = () => {
           <span>Rua das Ruas, nº 4, Sala 6 - Centro. Pouso Alegre/MG. CEP: 37555-000 Contato: 0800 088 0888 CNPJ: 33.333.333/0003-33</span>
         </div>
       </Footer>
-    </div>
+    </div >
   )
 }
 

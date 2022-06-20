@@ -88,13 +88,12 @@ function Header() {
         <ImageRaw>
           <Image
             src={'/image/background.png'}
-            width={'100%'}
-            height={'100%'}
-            layout={'responsive'}
+            layout="fill"
+            objectFit="contain"
+            quality={100}
+            alt={'Image background'}
             priority />
         </ImageRaw>
-        {/* <Image src={'/image/background.png'} width={'100%'} height={'100%'} layout={'fill'} priority /> */}
-        {/* <ImageRaw imgUrl={background.src} /> */}
       </HeaderContainer>
     </div>
   )
