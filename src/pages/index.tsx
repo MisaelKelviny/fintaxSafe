@@ -12,7 +12,7 @@ import bg1 from '/public/image/bg1.png'
 import bg2 from '/public/image/bg2.png'
 import bg3 from '/public/image/bg3.png'
 import bg4 from '/public/image/bg4.png'
-import business from '/public/image/business.jpg'
+import business from '/public/image/business.png'
 import logoClaro from '/public/image/logo_claro.png'
 
 interface TextProp {
@@ -62,7 +62,7 @@ const TemplateRow = styled.div`
 const ImageRaw = styled.div`
   width: 100%;
   height: 100%;
-  background: url(${business.src});
+  background: url("${business.src}");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -243,7 +243,7 @@ const Home: NextPage = () => {
       </Layout>
       <Layout>
         <TemplateRow>
-          <div style={{ height: '100%', width: '90%' }}>
+          <div style={{ height: '100%', width: '90%', display: 'block' }}>
             <ImageRaw />
           </div>
           <div>
