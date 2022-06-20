@@ -7,6 +7,7 @@ import bg2 from '../../assets/image/bg2.png'
 import bg3 from '../../assets/image/bg3.png'
 import bg4 from '../../assets/image/bg4.png'
 import business from '../../assets/image/business.jpg'
+import logoClaro from '../../assets/image/logo_claro.png'
 import token from '../../styles/design-tokens'
 import Faq from '../components/LandingPage/FAQ'
 import Header from '../components/LandingPage/Header'
@@ -61,7 +62,7 @@ const TemplateRow = styled.div`
 const ImageRaw = styled.div`
   width: 100%;
   height: 100%;
-  background: url(${(props: AttributeProp) => props.imgUrl});
+  background: url(${business.src});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -99,10 +100,19 @@ const BuyButton = styled.button`
 
 const Footer = styled.footer`
   background-color: ${token.color.primary};
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  padding: 100px 100px 0px 100px;
+  padding: 50px 100px 10px 100px;
+  margin-top: 100px;
   color: white;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+  @media ${token.size.tablet} {
+    height: 100%;
+  }
 `
 
 const benefits = [
@@ -139,7 +149,7 @@ const Home: NextPage = () => {
   const [device, setDevice] = useState('')
   const [validate, setValidate] = useState('')
   const [atendimento, setAtendimento] = useState('')
-  const [aceptTerms, setAceptTerms] = useState('false')
+  const [aceptTerms, setAceptTerms] = useState(false)
 
   const buy = () => {
     if (aceptTerms && option && device && validate && atendimento) {
@@ -157,7 +167,7 @@ const Home: NextPage = () => {
       if (atendimento === '') {
         alert('Está faltando escolher a forma de atendimento')
       }
-      if (aceptTerms === 'false') {
+      if (aceptTerms === false) {
         alert('Leia e Aceite os termos de uso antes de efetuar a compra')
       }
     }
@@ -234,7 +244,7 @@ const Home: NextPage = () => {
       <Layout>
         <TemplateRow>
           <div style={{ height: '100%', width: '90%' }}>
-            <ImageRaw imgUrl={business.src} />
+            <ImageRaw />
           </div>
           <div>
             <Title text='Solução para diferentes tipos de negócio' />
@@ -346,10 +356,10 @@ const Home: NextPage = () => {
                     <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
                       <input
                         type='checkbox'
-                        value={aceptTerms}
+                        value={aceptTerms ? 'true' : 'false'}
                         name="accept"
-                        checked={JSON.parse(aceptTerms)}
-                        onChange={() => setAceptTerms('true')}
+                        checked={aceptTerms}
+                        onChange={() => setAceptTerms(!aceptTerms)}
                       />
                       <span style={{ paddingLeft: '10px' }}>Li e Aceito os termos de uso</span>
                     </div>
@@ -365,39 +375,19 @@ const Home: NextPage = () => {
         <Title text={`FAQ's`} />
         <Faq />
       </Layout>
-      {/* <Footer>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 3fr 1fr', marginBottom: '20px' }}>
+      <Footer>
+        <div style={{ display: 'grid', gridTemplateColumns: '12fr', marginBottom: '20px', textAlign: 'center' }}>
           <div>
             <Image src={logoClaro} alt="Logo claro" width='62' height='62' layout='intrinsic' />
             <div style={{ marginTop: '20px' }}>
               Entre em contato conosco e solicite e emissão por videoconferência ou presencial
             </div>
           </div>
-          <div>
-            <ul>
-              <li>Sobre</li>
-              <li>Carreira</li>
-              <li>Politica de Garantia</li>
-              <li>FAQ’s</li>
-              <li>Politica de Privacidade</li>
-              <li>Renovação</li>
-              <li>Teste seu certificado</li>
-              <li>Ajuda</li>
-            </ul>
-          </div>
-          <div>
-            <div>
-              <p>Formas de Pagamento</p>
-            </div>
-            <div>
-              <p>Contantos</p>
-            </div>
-          </div>
         </div>
         <div style={{ textAlign: 'center', color: token.color.terciary }}>
           <span>Rua das Ruas, nº 4, Sala 6 - Centro. Pouso Alegre/MG. CEP: 37555-000 Contato: 0800 088 0888 CNPJ: 33.333.333/0003-33</span>
         </div>
-      </Footer> */}
+      </Footer>
     </div>
   )
 }
