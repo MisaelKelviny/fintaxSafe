@@ -17,21 +17,23 @@ const customStyles = {
 
 Modal.setAppElement('body');
 
-export default function ModalSimple({ children, open, setOpen }: ModalProp) {
-  const handleClose = () => {
-    setOpen(false)
-  }
+type ModalProp = {
+  children: any,
+  open: boolean,
+  setOpen: (value: boolean) => void
+}
 
+export default function ModalSimple({ children, open, setOpen }: ModalProp) {
   return (
     <div style={{ position: 'relative' }}>
       <Modal
         isOpen={open}
-        onRequestClose={handleClose}
+        onRequestClose={() => setOpen(false)}
         style={customStyles}
         shouldCloseOnOverlayClick={false}
       >
         <div className={styles.closeContainer}>
-          <button onClick={handleClose} className={styles.closeButton}>X</button>
+          <button onClick={() => setOpen(false)} className={styles.closeButton}>X</button>
         </div>
         <div>
           {children}

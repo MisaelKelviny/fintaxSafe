@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from 'formik'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import MaskedInput from 'react-text-mask'
 import * as Yup from 'yup'
 import token from '../../../../styles/design-tokens'
@@ -9,20 +9,32 @@ import SubTitle from '../Subtitle'
 import Title from '../Title'
 import styles from './styles.module.css'
 
+type DeviceProp = {
+  type: string,
+  value: string,
+  price: number
+}
+
+type ProductProp = {
+  type: string,
+  value: string,
+  devices: Array<DeviceProp>
+}
+
 const Products = () => {
   const [option, setOption] = useState('')
   const [device, setDevice] = useState('')
   const [devices, setDevices] = useState([
-    { type: 'Dispositivos', value: 'INAPTO ARQUIVO (A1)' },
-    { type: 'Dispositivos', value: 'INAPTO CARTÃO (A3)' },
-    { type: 'Dispositivos', value: 'INAPTO CARTÃO E  LEITORA (A3)' },
-    { type: 'Dispositivos', value: 'INAPTO SEM MIDIA (A3)' },
-    { type: 'Dispositivos', value: 'INAPTO TOKEN (A3)' },
-    { type: 'Dispositivos', value: 'ARQUIVO (A1)' },
-    { type: 'Dispositivos', value: 'CARTAO + LEITORA (A3)' },
-    { type: 'Dispositivos', value: 'CARTAO (A3)' },
-    { type: 'Dispositivos', value: 'SEM MIDIA (A3)' },
-    { type: 'Dispositivos', value: 'TOKEN (A3)}' }
+    { type: 'Dispositivos', value: 'INAPTO ARQUIVO (A1)', price: 240.0 },
+    { type: 'Dispositivos', value: 'INAPTO CARTÃO (A3)', price: 430.0 },
+    { type: 'Dispositivos', value: 'INAPTO CARTÃO E  LEITORA (A3)', price: 430.0 },
+    { type: 'Dispositivos', value: 'INAPTO SEM MIDIA (A3)', price: 240.0 },
+    { type: 'Dispositivos', value: 'INAPTO TOKEN (A3)', price: 430.0 },
+    { type: 'Dispositivos', value: 'ARQUIVO (A1)', price: 240.0 },
+    { type: 'Dispositivos', value: 'CARTAO + LEITORA (A3)', price: 430.0 },
+    { type: 'Dispositivos', value: 'CARTAO (A3)', price: 300.0 },
+    { type: 'Dispositivos', value: 'SEM MIDIA (A3)', price: 240.0 },
+    { type: 'Dispositivos', value: 'TOKEN (A3)}', price: 430.0 }
   ])
   const [validate, setValidate] = useState('')
   const [atendimento, setAtendimento] = useState('')
@@ -124,15 +136,21 @@ const Products = () => {
       option: option,
       set: (e: any) => {
         setOption(e.target.value)
-        const chooseDevice = cards.filter(card => card.title === 'Certificados').map(item => {
-          return item.values.filter(i => i.value === e.target.value).flatMap(d => {
-            return d
-          })
+        let chooseDevice: any = []
+        cards.forEach((card) => {
+          if (card.title === 'Certificados') {
+            card.values.forEach((item) => {
+              if (item.value === e.target.value) {
+                chooseDevice.push({ ...item })
+              }
+            })
+          }
         })
-        
-        setDevice(chooseDevice[0][0]['devices'][0]['value'])
-        setDevices(chooseDevice[0][0]['devices'])
-        // console.log(device[0][0].devices)
+
+        // console.log(chooseDevice[0]?.devices)
+
+        setDevices(chooseDevice[0]?.devices)
+        setDevice(chooseDevice[0]?.devices[0]?.value)
       }
     },
     {
@@ -144,7 +162,7 @@ const Products = () => {
     },
     {
       title: 'Validade',
-      values: [{ type: 'Validade', value: '12 Meses' }],
+      values: [{ type: 'Validade', value: '12 Meses', devices: [] }],
       color: token.color.primary,
       option: validate,
       set: (e: any) => setValidate(e.target.value)
@@ -295,7 +313,7 @@ const Products = () => {
               }}
               validationSchema={SignupSchema}
               onSubmit={values => {
-                console.log(values);
+                console.log(values)
               }}
             >
               {({
@@ -328,7 +346,7 @@ const Products = () => {
                     Contato
                     <Field
                       name="contact"
-                      render={({ field }) => (
+                      render={({ field }: any) => (
                         <MaskedInput
                           {...field}
                           mask={phoneNumberMask}
