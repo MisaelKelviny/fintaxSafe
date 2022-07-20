@@ -18,8 +18,7 @@ const Footer = () => {
             alt="Logo claro"
             width='62'
             height='62'
-            layout='intrinsic'
-            loading="lazy"
+            priority
           />
           <div style={{ marginTop: '20px' }}>
             Entre em contato conosco e solicite e emissão por videoconferência ou presencial

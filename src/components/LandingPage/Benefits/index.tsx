@@ -28,7 +28,7 @@ const Benefits = () => {
               height={200}
               quality={100}
               layout='responsive'
-              loading="lazy"
+              priority
             />
             <div style={{ direction: 'ltr' }}>
               <h2>{object.title}</h2>

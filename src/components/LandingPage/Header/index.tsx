@@ -31,7 +31,7 @@ function Header() {
             objectFit="contain"
             quality={100}
             alt={'Image background'}
-            loading="lazy"
+            priority
           />
         </div>
       </div>

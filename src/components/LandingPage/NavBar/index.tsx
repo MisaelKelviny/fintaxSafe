@@ -15,6 +15,7 @@ function Navbar() {
           width={50}
           height={50}
           objectFit='contain'
+          priority
         />
       </div>
       <ul className={styles.menu}>
