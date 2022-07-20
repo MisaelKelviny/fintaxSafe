@@ -1,32 +1,11 @@
 import { useState } from 'react'
-import styled from 'styled-components'
+import Layout from '../Layout'
+import Title from '../Title'
+import styles from './styles.module.css'
 
 type BackgroundColorPropos = {
   isOpen: boolean
 }
-
-const Container = styled.div`
-  width: 100%;
-  background: white;
-  color: black;
-  border: 1px solid black;
-  margin: 16px 0px;
-`
-
-const ContainerHeader = styled.div`
-  font-size: 24px;
-  font-weight: bolder;
-  padding: 10px;
-  cursor: pointer;
-`
-
-const BackgroundColor = styled.div`
-  width: 100%;
-  height: 100%;
-  display: ${(props: BackgroundColorPropos) => props.isOpen ? 'block' : 'none'};
-padding: 20px;
-background - color: #f3f3f3;
-`
 
 const faqs = [
   {
@@ -93,23 +72,36 @@ export default function Faq() {
   const handleOpen = (id: string) => {
     setChoose(id)
     setOpen(!open)
+
+    console.log(choose)
+    console.log(open && choose === id)
   }
 
   return (
-    <div>
-      {faqs.map(f => {
-        return (
-          <Container key={f.id} onClick={() => handleOpen(f.id)}>
-            <ContainerHeader>
-              {f.title}
-            </ContainerHeader>
-            <BackgroundColor isOpen={open && f.id === choose}>
-              {f.awnser}
-            </BackgroundColor>
-          </Container>
-        )
-      })}
-    </div>
+    <Layout id={'Faq'}>
+      <Title text={`FAQ's`} />
+      <div id={'faq'}>
+        {faqs.map((f, i) => {
+          return (
+            <div
+              key={f.id}
+              onClick={() => handleOpen(f.id)}
+              className={styles.container}
+            >
+              <div className={styles.containerHeader}>
+                {f.title}
+              </div>
+              <div
+                className={styles.backgroundColor}
+                style={{ display: open && f.id === choose ? 'block' : 'none' }}
+              >
+                {f.awnser}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </Layout>
   )
 }
 

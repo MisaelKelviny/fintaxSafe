@@ -1,0 +1,18 @@
+.closeButton {
+  font-weight: bolder;
+  font-size: 20px;
+  color: black;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.closeContainer{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.closeButton:hover{
+  color: darkslategray
+}

@@ -1,0 +1,101 @@
+.cardsOption {
+  height: 100%;
+  padding: 10px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  color: white;
+}
+
+.buyButton {
+  background-color: blue;
+  border: 0px solid transparent;
+  color: white;
+  font-weight: bolder;
+  font-size: 16px;
+  padding: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.form {
+  width: 500px;
+  height: 100%;
+  padding: 10px;
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: 30px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  font-weight: 500;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 5px;
+  border: 2px solid #9e9e9e;
+  border-radius: 3px;
+}
+
+.error {
+  color: crimson;
+  white-space: nowrap;
+  font-size: 12px;
+  position: absolute;
+  bottom: -20px;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submitButton {
+  background-color: blue;
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  border: transparent;
+  font-weight: bold;
+  color: white;
+  filter: drop-shadow(0px 8px 8px #00A3FF77);
+  cursor: pointer;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #00A3FF;
+}
+
+.subtitle {
+  color: #6C757D;
+}
+
+.link{
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

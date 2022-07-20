@@ -1,28 +1,14 @@
-import styled from 'styled-components'
-import token from '../../../styles/design-tokens'
-
+import styles from './styles.module.css'
 interface SubTitleProp {
   text?: string
-  align?: string
+  align?: any
 }
-
-const Text = styled.div`
-  color: ${token.color.terciary};
-  font-size: 1.2rem;
-  text-align: justify;
-  margin-bottom: 24px;
-
-  @media ${token.size.tablet}  {
-    font-size: 1.5rem;
-    text-align:  ${(props: SubTitleProp) => props.align};
-  }
-`
 
 function SubTitle({ text, align = 'unset' }: SubTitleProp) {
   return (
-    <Text align={align}>
+    <div className={styles.subtitle} style={{ textAlign: align }} >
       {text}
-    </Text>
+    </ div>
   )
 }
 

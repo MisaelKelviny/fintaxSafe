@@ -1,23 +1,14 @@
-import styled from 'styled-components'
-
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 10% 10% 0px 10%;
-  display: inline-table;
-  justify-content: center;
-  align-items: center;
-`
-
+import styles from './styles.module.css'
 interface LayoutProp {
-  children: any
+  children: any,
+  id: string
 }
 
-function Layout({ children }: LayoutProp) {
+function Layout({ children, id }: LayoutProp) {
   return (
-    <Container>
+    <div className={styles.container} id={id}>
       {children}
-    </Container>
+    </div>
   )
 }
 

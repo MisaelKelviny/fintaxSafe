@@ -1,0 +1,43 @@
+.navbar {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  right: 0;
+  padding: 10px 10%;
+  height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  z-index: 99;
+}
+
+.menu {
+  list-style-type: none;
+  display: flex;
+  width: 100%;
+  justify-content: space-around
+}
+
+.menuItem {
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-right: 0px;
+}
+
+@media (min-width: 768px) {
+  .menu {
+    margin-right: 35px;
+    justify-content: flex-end;
+  }
+
+  .menuItem {
+    margin-right: 35px;
+    justify-content: flex-end;
+  }
+}
+
+.menuItem:hover {
+  color: #00a3ff;
+}

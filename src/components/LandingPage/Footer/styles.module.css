@@ -1,0 +1,18 @@
+.footerContainer {
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+  padding: 50px 100px 10px 100px;
+  margin-top: 100px;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .footerContainer {
+    height: 100%;
+  }
+}

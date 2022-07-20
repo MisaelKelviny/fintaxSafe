@@ -1,0 +1,8 @@
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 10% 10% 0px 10%;
+  display: inline-table;
+  justify-content: center;
+  align-items: center;
+}
