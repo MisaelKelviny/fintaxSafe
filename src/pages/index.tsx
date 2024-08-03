@@ -1,24 +1,11 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Benefits from '../components/LandingPage/Benefits'
-import Faq from '../components/LandingPage/FAQ'
-import Footer from '../components/LandingPage/Footer'
-import Header from '../components/LandingPage/Header'
-import Products from '../components/LandingPage/Products'
-import Solutions from '../components/LandingPage/Solutions'
-
-
-interface TextProp {
-  text?: string,
-  isBold?: boolean,
-  align?: string
-}
-
-interface AttributeProp {
-  color?: string
-  imgUrl?: string
-  reverse?: boolean
-}
+import type { NextPage } from "next";
+import Head from "next/head";
+import Benefits from "../components/LandingPage/Benefits";
+import Faq from "../components/LandingPage/FAQ";
+import Footer from "../components/LandingPage/Footer";
+import Header from "../components/LandingPage/Header";
+import Products from "../components/LandingPage/Products";
+import Solutions from "../components/LandingPage/Solutions";
 
 const Home: NextPage = () => {
   return (
@@ -32,8 +19,8 @@ const Home: NextPage = () => {
       <Products />
       <Faq />
       <Footer />
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default Home
+export default Home;
